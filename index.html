@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blackout</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            color: white;
+            font-family: Times, serif;
+        }
+
+        #container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        #text {
+            font-size: 26px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="text"></div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const textElement = document.getElementById('text');
+
+            document.addEventListener('keydown', function(event) {
+                const key = event.key;
+
+                // Ignore special keys
+                if (event.ctrlKey || event.altKey || event.metaKey || key === 'Shift' || key === 'CapsLock' || key === 'Tab' || key === 'Enter' || key === 'Escape') {
+                    event.preventDefault();
+                    return;
+                } else if (key === 'Backspace') {
+                    const text = textElement.innerText;
+                    textElement.innerText = text.substring(0, text.length - 1);
+                    return;
+                } else if (key.length === 1) {
+                    // Reset text on space and dot
+                    if (key === ' ' || key === '.') {
+                        textElement.innerText = '';
+                    } else {
+                        textElement.innerText += key;
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
