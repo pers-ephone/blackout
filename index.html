@@ -24,15 +24,39 @@
             font-size: 26px;
             text-align: center;
         }
+
+        /* Hide the input field */
+        #hidden-input {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 1px;
+            height: 1px;
+            opacity: 0;
+        }
     </style>
 </head>
 <body>
     <div id="container">
         <div id="text"></div>
     </div>
+
+    <!-- Add a hidden input field -->
+    <input id="hidden-input" type="text">
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const textElement = document.getElementById('text');
+            const hiddenInput = document.getElementById('hidden-input');
+
+            // Focus the hidden input field when the page is clicked or touched
+            document.body.addEventListener('click', function() {
+                hiddenInput.focus();
+            });
+
+            document.body.addEventListener('touchstart', function() {
+                hiddenInput.focus();
+            });
 
             document.addEventListener('keydown', function(event) {
                 const key = event.key;
