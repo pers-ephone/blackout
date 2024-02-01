@@ -32,13 +32,17 @@
     </style>
 </head>
 <body>
-    <input id="invisibleInput" type="text" autofocus>
+    <input id="invisibleInput" type="text">
     <div id="container">
         <div id="text"></div>
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const textElement = document.getElementById('text');
+            const invisibleInput = document.getElementById('invisibleInput');
+
+            // Focus on the invisible input to trigger the keyboard
+            invisibleInput.focus();
 
             document.addEventListener('keydown', function(event) {
                 const key = event.key;
